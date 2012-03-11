@@ -15,26 +15,26 @@ class Leet ([Boolean digit = false])
 
 ```coffeescript
 
-- leet = new Leet()
--
-- #set the character of a set of default values
-- leet.view({
--    a: 1, #@
--    b: 2, #ß
--  })
--
-- #extend the existing set of roots:
-- leet.append(leet.root, {
--    foo: 1,
--    bar: 2
-- })
--
-- #extends the existing set of ciphers
-- #Note you'd to escape sequences like ',",\
-- leet.append(leet.ciphers, {
--    a: '/-\\',
--    b: '\\>>',
-- })
+leet = new Leet()
+
+#set the character of a set of default values
+leet.view({
+   a: 1, #@
+   b: 2, #ß
+})
+
+#extend the existing set of roots:
+leet.append(leet.root, {
+   foo: 1,
+   bar: 2
+})
+
+#extends the existing set of ciphers
+#Note you'd to escape sequences like ',",\
+leet.append(leet.ciphers, {
+   a: '/-\\',
+   b: '\\>>',
+})
 
 #encode
 encode = leet.encode 'foo is a big bar'
