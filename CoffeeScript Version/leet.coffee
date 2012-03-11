@@ -175,13 +175,9 @@ class Leet
 		string = string.replace(RegExp(i, 'g'), @root[i]) for i of @root
 
 		#Replace the remaining characters
-		string.replace /[\w\d]/g, (item) =>
-			array = @cipher[item]
-
-			try
-				array[if @digit then array.length-1 else @items(item)]
-			catch error
-				item
+		string.replace /./g, (item) =>
+			cipher = @cipher[item]
+			return if item of @cipher then cipher[if @digit then cipher[-1..] else @items(item)] else item
 
 	###
 	- Decode Leet sequence
@@ -195,3 +191,31 @@ class Leet
 		- Also see: https://www.google.com/webhp?hl=xx-hacker
 		- But if you still want to implement the one let me know!
 		###
+
+
+leet = new Leet()
+
+#set the character of a set of default values
+leet.view({
+   a: 1, #@
+   b: 2, #ß
+})
+
+#extend the existing set of roots:
+leet.append(leet.root, {
+   foo: 1,
+   bar: 2
+})
+
+#extends the existing set of ciphers
+#Note you'd to escape sequences like ',",\
+leet.append(leet.ciphers, {
+   a: '/-\\',
+   b: '\\>>',
+})
+
+#encode
+encode = leet.encode 'foo is a big bar'
+
+#result
+console.log encode #1 !$ @ ß![, 2
