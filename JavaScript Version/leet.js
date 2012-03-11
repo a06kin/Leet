@@ -144,7 +144,7 @@ Leet.prototype = {
 	* Boolean object (Object object);
 	*/
 	object: function(object) {
-		return Object.prototype.toString.call(object) == '[object Object]';
+		return Object.prototype.toString.call(object) === '[object Object]';
 	},
 
 	/*
