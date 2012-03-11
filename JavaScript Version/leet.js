@@ -188,15 +188,9 @@ Leet.prototype = {
 			string = string.replace(RegExp(i, 'g'), this.root[i]);
 
 		//Replace the remaining characters
-		return string.replace(/[\w\d]/g, function(item) {
-			var array = self.cipher[item];
-
-			try {
-				 return array[self.digit ? array.length-1 : self.items(item)];
-			}
-			catch (error) {
-				return item;
-			}
+		return string.replace(/./g, function(item) {
+			var cipher = self.cipher[item];
+			return item in self.cipher ? cipher[self.digit ? cipher.length - 1 : self.items(item)] : item
 		});
 	},
 
