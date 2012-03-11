@@ -129,9 +129,8 @@ class Leet:
 		if hasattr(self, '_item'):
 			_item = self._item
 
-			if _item:
-				for i in _item or {}:
-					items[i] = _item[i]
+			for i in _item or {}:
+				items[i] = _item[i]
 
 		return items[item]
 
