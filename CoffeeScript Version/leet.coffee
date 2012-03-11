@@ -177,7 +177,10 @@ class Leet
 		#Replace the remaining characters
 		string.replace /./g, (item) =>
 			cipher = @cipher[item]
-			return if item of @cipher then cipher[if @digit then cipher[-1..] else @items(item)] else item
+
+			return if item of @cipher
+				cipher[if @digit then cipher[-1..] else @items(item)]
+			else item
 
 	###
 	- Decode Leet sequence
@@ -191,3 +194,4 @@ class Leet
 		- Also see: https://www.google.com/webhp?hl=xx-hacker
 		- But if you still want to implement the one let me know!
 		###
+
