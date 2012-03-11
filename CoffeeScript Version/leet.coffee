@@ -186,7 +186,7 @@ class Leet
 	###
 	- Decode Leet sequence
 	###
-	decode: () ->
+	decode: ->
 		###
 		- There is no reason to implement this method because:
 		-   very high computational complexity
@@ -195,13 +195,3 @@ class Leet
 		- Also see: https://www.google.com/webhp?hl=xx-hacker
 		- But if you still want to implement the one let me know!
 		###
-
-
-leet = new Leet()
-
-leet.append(leet.root, {
-   foo: 888,
-   bar: 2
-})
-
-console.log(leet.encode('one some foo'))

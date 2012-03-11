@@ -1,14 +1,10 @@
-class Foo
-	constructor: (digit) ->
-		@digit = digit;
+leet = require './leet.coffee'
 
-	some : {
-		a: 1
-	}
+leet = new Leet()
 
-	foo: () ->
-		@some.a
+leet.append(leet.root, {
+   foo: 888,
+   bar: 2
+})
 
-foo = new Foo "Sammy the Python"
-
-console.log(foo.foo())
+console.log(leet.encode('one some foo'))
