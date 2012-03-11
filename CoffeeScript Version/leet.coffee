@@ -10,22 +10,22 @@
 - leet = new Leet()
 -
 - #set the character of a set of default values
-- leet.view({
+- leet.item({
 -    a: 1, #@
--    b: 2, #ß
+-    b: 2  #ß
 -  })
 -
 - #extend the existing set of roots:
-- leet.append(leet.root, {
+- leet.extend('lroot', {
 -    foo: 1,
 -    bar: 2
 - })
 -
 - #extends the existing set of ciphers
 - #Note you'd to escape sequences like ',",\
-- leet.append(leet.ciphers, {
+- leet.extend('cipher', {
 -    a: '/-\\',
--    b: '\\>>',
+-    b: '\\>>'
 - })
 -
 - #encode
@@ -35,7 +35,7 @@
 - console.log encode #1 !$ @ ß![, 2
 -
 - @author: Alexander Guinness
-- @version: 1.1
+- @version: 1.2
 - @params: {Boolean} digit - optional boolean parameter
 - to set an alternative digital view
 - @license: MIT
@@ -103,25 +103,33 @@ class Leet
 		'nine':  9, 'ks':   'x', 'cs':  'x'
 
 	###
-	- Extends the existing set of ciphers:
+	- Extends and merges the existing set of ciphers:
 	-   - this.cipher
 	-   - this.root
 	-
 	- Use:
-	-   leet.append(leet.root, {
+	-   leet.append('root', {
 	-       foo: 1,
 	-       bar: 2
 	-   });
 	-
 	- Object items (String item);
 	###
-	append: (object, values) ->
-		@extend object, values if @object(object) and @object values
+	extend: (name, values) ->
+		if !@object(values) and !@object(@[name])
+			return -1;
+
+		key = @[name];
+
+		for i of values
+			if name is 'cipher'
+				key[i].unshift(values[i])
+
+			else if name is 'root'
+				key[i] = values[i]
 
 	###
-	- Creates an object with default values
-	- ​​and extends the basic symbols of Leet
-	-
+	- Creates an object with default values ​​and set Leet item
 	- Object items (String item);
 	###
 	items: (item) ->
@@ -131,7 +139,12 @@ class Leet
 		for i of @cipher
 			items[i] = 0
 
-		@extend(items, @view)[item];
+		#set the item
+		if @_item
+			for i of @_item or {}
+				items[i] = @_item[i]
+
+		items[item]
 
 	###
 	- Checks to see if an object is a plain object
@@ -144,27 +157,14 @@ class Leet
 	- This method explicitly sets the character of a set of default values
 	-
 	- Use:
-	-	leet.view({
+	-	leet.item({
 	-		s: 1
 	-	});
 	-
-	- void view (Object object)
+	- void item (Object object)
 	###
-	view: (object) ->
-		@view = object if @object(object)
-
-	###
-	- Merges the contents of two objects together into the first object.
-	- Object extend (Object object, [Object values]);
-	###
-	extend: (object, values) ->
-		if !@object values
-			return object
-
-		for i of values
-			object[i] = values[i]
-
-		object
+	item: (object) ->
+		@_item = object if @object(object)
 
 	###
 	- Encodes the Latin characters in the Leet sequence
@@ -194,4 +194,3 @@ class Leet
 		- Also see: https://www.google.com/webhp?hl=xx-hacker
 		- But if you still want to implement the one let me know!
 		###
-
