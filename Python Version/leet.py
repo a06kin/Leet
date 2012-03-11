@@ -12,7 +12,7 @@
 - #set the character of a set of default values
 - leet.item({
 -    'a': 1, #@
--    'b': 2  #ÃŸ
+-    'b': 2  #Ã
 -  })
 -
 - #extend the existing set of roots:
@@ -29,13 +29,13 @@
 - })
 -
 - #encode
-- encode = leet.encode 'foo is a big bar'
+- encode = leet.encode('foo is a big bar')
 -
 - #result
-- console.log encode #1 !$ @ ÃŸ![, 2
+- print(encode) #1 !$ @ Ã![, 2
 -
 - @author: Alexander Guinness
-- @version: 1.1
+- @version: 1.2
 - @params: {boolean} digit - optional boolean parameter
 - to set an alternative digital view
 - @license: MIT
