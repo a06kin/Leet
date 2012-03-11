@@ -104,16 +104,16 @@ class Leet
 
 	###
 	- Extends and merges the existing set of ciphers:
-	-   - this.cipher
-	-   - this.root
+	-   - @cipher
+	-   - @root
 	-
 	- Use:
-	-   leet.append('root', {
+	-   leet.extend('root', {
 	-       foo: 1,
 	-       bar: 2
 	-   });
 	-
-	- Object items (String item);
+	- Object items (String name, Object values);
 	###
 	extend: (name, values) ->
 		if !@object(values) and !@object(@[name])
@@ -158,7 +158,7 @@ class Leet
 	-
 	- Use:
 	-	leet.item({
-	-		s: 1
+	-		a: 1
 	-	});
 	-
 	- void item (Object object)

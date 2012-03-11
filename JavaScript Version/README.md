@@ -18,22 +18,22 @@ Object Leet ([Boolean digit = false])
 var leet = new Leet();
 
 //set the character of a set of default values
-leet.view({
+leet.item({
     a: 1, //@
-    b: 2, //ß
+    b: 2  //ß
 });
 
 //extend the existing set of roots:
-leet.append(leet.root, {
+leet.extend(leet.root, {
     foo: 1,
     bar: 2
  });
 
 //extends the existing set of ciphers.
 //Note you'd to escape sequences like ',",\
-leet.append(leet.ciphers, {
+leet.extend(leet.cipher, {
     a: '/-\\',
-    b: '\\>>',
+    b: '\\>>'
  });
 
 //encode

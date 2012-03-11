@@ -10,22 +10,22 @@
  * var leet = new Leet();
  *
  * //set the character of a set of default values
- * leet.view({
+ * leet.item({
  *    a: 1, //@
- *    b: 2, //ß
+ *    b: 2  //ß
  *  });
  *
  * //extend the existing set of roots:
- * leet.append(leet.root, {
+ * leet.extend('root', {
  *    foo: 1,
  *    bar: 2
  * });
  *
  * //extends the existing set of ciphers
  * //Note you'd to escape sequences like ',",\
- * leet.append(leet.ciphers, {
+ * leet.extend('cipher', {
  *    a: '/-\\',
- *    b: '\\>>',
+ *    b: '\\>>'
  * });
  *
  * //encode
@@ -35,7 +35,7 @@
  * console.log(encode); //1 !$ @ ß![, 2
  *
  * @author: Alexander Guinness
- * @version: 1.1
+ * @version: 1.2
  * @params: {Boolean} digit - optional boolean parameter
  * to set an alternative digital view
  * @license: MIT
@@ -106,24 +106,6 @@ Leet.prototype = {
 	},
 
 	/*
-	* Extends the existing set of ciphers:
-	*   - this.cipher
-	*   - this.root
-	*
-	* Use:
-	*   leet.append(leet.root, {
-	*       foo: 1,
-	*       bar: 2
-	*   });
-	*
-	* Object items (String item);
-	*/
-	append: function(object, values) {
-		if (this.object(object) && this.object(values))
-			this.extend(object, values);
-	},
-
-	/*
 	* Creates an object with default values
 	* ​​and extends the basic symbols of Leet
 	*
@@ -136,7 +118,15 @@ Leet.prototype = {
 		for (i in this.cipher)
 			items[i] = 0;
 
-		return this.extend(items, this.view)[item];
+		//set the item
+		var _item = this._item;
+
+		if (_item) {
+			for (i in _item || {})
+				items[i] = _item[i];
+		}
+
+		return items[item];
 	},
 
 	/*
@@ -151,29 +141,43 @@ Leet.prototype = {
 	* This method explicitly sets the character of a set of default values
 	*
 	* Use:
-	*	leet.view({
-	*		s: 1
+	*	leet.item({
+	*		a: 1
 	*	});
 	*
-	* void view (Object object)
+	* void item (Object object)
 	*/
-	view: function(object) {
+	item: function(object) {
 		if (this.object(object))
-			this.view = object;
+			this._item = object;
 	},
 
 	/*
-	* Merges the contents of two objects together into the first object.
-	* Object extend (Object object, [Object values]);
+	* Extends and merges the existing set of ciphers:
+	*   - this.cipher
+	*   - this.root
+	*
+	* Use:
+	*   leet.extend('root', {
+	*       foo: 1,
+	*       bar: 2
+	*   });
+	*
+	*  void extend (String item, Object values);
 	*/
-	extend: function(object, values) {
-		if (!this.object(values))
-			return object;
+	extend: function(name, values) {
+		if (!this.object(values) && !this.object(name))
+			return -1;
 
-		for (i in values)
-			object[i] = values[i];
+		var key = this[name];
 
-		return object;
+		for (i in values) {
+			if (name == 'cipher')
+				key[i].unshift(values[i]);
+
+			else if (name == 'root')
+				key[i] = values[i];
+		}
 	},
 
 	/*
