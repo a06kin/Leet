@@ -15,16 +15,17 @@
  *    b: 2, //ß
  *  });
  *
- * // extend the existing set of roots:
+ * //extend the existing set of roots:
  * leet.append(leet.root, {
  *    foo: 1,
  *    bar: 2
  * });
  *
  * //extends the existing set of ciphers
+ * //Note you'd to escape sequences like ',",\
  * leet.append(leet.ciphers, {
- *    a: '/-\',
- *    b: '\>>',
+ *    a: '/-\\',
+ *    b: '\\>>',
  * });
  *
  * //encode

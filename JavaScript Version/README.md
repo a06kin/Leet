@@ -14,22 +14,26 @@ Object Leet ([Boolean digit = false])
 *For example you could use the following code:*
 
 ```javascript
+
+var leet = new Leet();
+
 //set the character of a set of default values
 leet.view({
     a: 1, //@
     b: 2, //ß
 });
 
-// extend the existing set of roots:
+//extend the existing set of roots:
 leet.append(leet.root, {
     foo: 1,
     bar: 2
  });
 
-//extends the existing set of ciphers
+//extends the existing set of ciphers.
+//Note you'd to escape sequences like ',",\
 leet.append(leet.ciphers, {
-    a: '/-\',
-    b: '\>>',
+    a: '/-\\',
+    b: '\\>>',
  });
 
 //encode
