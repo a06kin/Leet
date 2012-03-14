@@ -3,7 +3,7 @@
 Leet (or "1337"), also known as eleet or leetspeak is an alternative alphabet for the English language that is used primarily on the Internet.
 
 ##License
-	MIT
+	PSF, MIT
 
 ##Synopsis:
 ```python
@@ -14,6 +14,8 @@ class Leet ([Boolean digit = false])
 *For example you could use the following code:*
 
 ```python
+
+from leet import *
 
 leet = new Leet()
 
