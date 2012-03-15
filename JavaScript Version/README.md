@@ -24,14 +24,14 @@ leet.item({
 });
 
 //extend the existing set of roots:
-leet.extend(leet.root, {
+leet.extend('root', {
     foo: 1,
     bar: 2
  });
 
 //extends the existing set of ciphers.
 //Note you'd to escape sequences like ',",\
-leet.extend(leet.cipher, {
+leet.extend('cipher', {
     a: '/-\\',
     b: '\\>>'
  });
