@@ -39,10 +39,9 @@ leet.extend('ciphers', {
 })
 
 #encode
-encode = print(leet.encode('foo is a big bar'))
+encode = leet.encode('foo is a big bar')
 
-#result
- #1 !$ @ ß![, 2
+print(encode) #1 !$ @ ß![, 2
 ```
 
 *An alternative digital view*:
