@@ -214,14 +214,3 @@ class Leet {
 		*/
 	}
 }
-
-void main() {
-  Leet leet = new Leet(false); //true
-
-  leet.item({'a': '1', 'b': '2'});
-  
-  leet.extend('cipher', {'a': '2', 'b': '2'});
-
-  print(leet.encode('a'));
- 
-}
