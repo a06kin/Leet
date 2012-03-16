@@ -156,20 +156,20 @@ class Leet {
 	*	void extend (String item, Map object);
 	*/
 	void extend(String name, Map object) {
-	/*
-	* Predicate for forEach
-	* void predicate(String key, String value);
-	*/
-	void predicate(String key, String value) {
-		if (name == 'cipher')
-			this.cipher[key].addLast(value);
+		/*
+		* Predicate for forEach
+		* void predicate(String key, String value);
+		*/
+		void predicate(String key, String value) {
+			if (name == 'cipher')
+				this.cipher[key].addLast(value);
 
-		else if (name == 'root')
-			this.root[key] = value;      
-	}
+			else if (name == 'root')
+				this.root[key] = value;
+		}
 
-	if (object is Map)
-		object.forEach((key, value) => predicate(key, value));
+		if (object is Map)
+			object.forEach((key, value) => predicate(key, value));
 	}
 
 	/*
