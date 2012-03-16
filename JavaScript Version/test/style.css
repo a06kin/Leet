@@ -54,3 +54,12 @@ label, table {
 	-khtml-user-select: none;
 	user-select: none;
 }
+
+p {
+	background: #E7FFE6;
+	color: #383839;
+	font: bold 18px/31px arial, tahoma, senf-serif;
+	margin-top: 32px;
+	padding-left: 9px;
+	width: 519px;
+}

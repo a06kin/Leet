@@ -1,76 +1,92 @@
-$(function() {
-	var div = $('#leet'),
-		textarea = $('textarea', div),
-		input = textarea.eq(0),
-		digit = 0;
+var Translator = {
+	init: function() {
+		var div = $('#leet');
 
-	var encrypt = function() {
-		var output = textarea.eq(1);
+		this.table(div);
+		this.form(div);
+	},
 
-		output.val(new Leet(digit).encode(input[0].value));
+	form: function(div) {
+		var textarea = $('textarea', div),
+			input = textarea.eq(0),
+			item = {},
+			digit = 0;
 
-		if (!input[0].value.length)
-			output.val(output[0].defaultValue);
-	};
+		var encrypt = function() {
+			var output = textarea.eq(1),
+				leet = new Leet(digit);
 
-	input.bind('keyup input change', encrypt).toggleValue();
+			leet.item(item);
+			output.val(leet.encode(input[0].value));
 
-	/*
-	$('.soft', div).click(function() {
-	});
-	*/
+			if (!input[0].value.length)
+				output.val(output[0].defaultValue);
+		};
 
-	$('.digit', div).click(function() {
-		digit = this.checked ? 1 : 0;
-		encrypt();
-	});
+		input.bind('keyup input change', encrypt).toggleValue();
 
-	var leet = new Leet();
+		//set index
+		$('table tr > td').on('click', function(event) {
+			if (event.target.nodeName !== 'TD')
+				return this;
 
-	//create table
-	var table = document.createElement('table'),
-		fragment = document.createDocumentFragment(),
-		row = 26;
+			$(this).addClass('selected').siblings('td').removeClass('selected');
+			item[$(this).siblings('td').find('b').text()] = $(this).index() - 1;
 
-	//create rows
-	while(row--)
-		tr = table.insertRow(-1);
-
-	document.body.appendChild(fragment.appendChild(table));
-
-	//get alphabet
-	var alphabet = [],
-		cipher = leet.cipher;
-
-	$.map(cipher, function(value, key) {
-		alphabet.push(key);
-	});
-
-	//create ceils
-	$('table tr').each(function(i) {
-		var alph = alphabet[i],
-			ceil = cipher[alph];
-
-		//set a-z
-		$('<td />').appendTo(this).html('<b>' + alph + '</b>');
-
-		//fill a-z
-		var j = ceil.length, _this = this;
-
-		$.each(ceil, function(j) {
-			$('<td />').appendTo(_this).html(ceil[j]);
+			encrypt();
 		});
-	});
 
-	var td = $('table td');
-	td.on('click', function(event) {
-		if (event.target.nodeName !== 'TD')
-			return this;
+		//digit mode
+		$('.digit', div).click(function() {
+			digit = this.checked ? 1 : 0;
+			encrypt();
+		});
+	},
 
-		$(this).addClass('selected').siblings('td').removeClass('selected');
+	table: function(div) {
+		var leet = new Leet();
 
-	//td.index(this)
-	});
+		//create table
+		var table = document.createElement('table'),
+			fragment = document.createDocumentFragment(),
+			i = 26;
+
+		//create rows
+		while(i--)
+			table.insertRow(-1);
+
+		div.append(fragment.appendChild(table));
+
+		//get alphabet
+		var alphabet = [],
+			cipher = leet.cipher;
+
+		$.map(cipher, function(value, key) {
+			alphabet.push(key);
+		});
+
+		fragment = document.createDocumentFragment();
+
+		//create ceils
+		$('table tr').each(function(i) {
+			var alph = alphabet[i],
+				ceil = cipher[alph];
+
+			//set a-z
+			$('<td />').appendTo(this).html('<b>' + alph + '</b>');
+
+			//fill a-z
+			var j = ceil.length, _this = this;
+
+			$.each(ceil, function(j) {
+				$('<td />').appendTo(_this).html(ceil[j]);
+			});
+		});
+	}
+};
+
+$(function() {
+	Translator.init();
 });
 
 (function($) {
