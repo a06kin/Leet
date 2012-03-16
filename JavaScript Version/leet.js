@@ -50,7 +50,7 @@ var Leet = function(digit) {
 
 Leet.prototype = {
 	/*
-	* A list of items associated with the characters of Leet
+	* Orthography list of items associated with the characters of Leet
 	*/
 	cipher : {
 		a: ['/-\\', '@', '/*\\', '/=\\', '/\\', '^', 'aye', 'в€‚', 'ci', 'О»',
@@ -96,7 +96,7 @@ Leet.prototype = {
 	},
 
 	/*
-	* A list of items associated with the digits of Leet
+	* Orthography list of items associated with the digits of Leet
 	*/
 	root: {
 		'one':   1, 'two':   2, 'to':    2,

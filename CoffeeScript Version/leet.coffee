@@ -49,10 +49,10 @@ class Leet
 		@digit = digit;
 
 	###
-	- A list of items associated with the characters of Leet
+	- Orthography list of items associated with the characters of Leet
 	###
 	cipher :
-		a: ['/-\\', '@', '###\\', '/=\\', '/\\', '^', 'aye', 'в€‚', 'ci', 'О»',
+		a: ['/-\\', '@', '/*\\', '/=\\', '/\\', '^', 'aye', 'в€‚', 'ci', 'О»',
 			'Z', '(L', 'Р”', 4],
 		b: ['|3', 'I3', '!3', 'Гџ', '(3', '/3', ')3', '|-]', ']3', 'j3', 6, 13, 8],
 		c: ['[', '(', '<', 'Вў', '{', 'В©', 'sea', 'see', 5],
@@ -94,7 +94,7 @@ class Leet
 		z: ['в‰Ґ', '-/_', '~/_', '-\\_', '-|_', '>_', 's', '%', 'К’', '7_', 2, '003']
 
 	###
-	- A list of items associated with the digits of Leet
+	- Orthography list of items associated with the digits of Leet
 	###
 	root:
 		'one':   1, 'two':   2, 'to':    2,
