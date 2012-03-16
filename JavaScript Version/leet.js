@@ -116,14 +116,14 @@ Leet.prototype = {
 		var items = {};
 
 		//fill items with default values
-		for (i in this.cipher)
+		for (var i in this.cipher)
 			items[i] = 0;
 
 		//set the item
 		var _item = this._item;
 
 		if (_item) {
-			for (i in _item || {})
+			for (var i in _item || {})
 				items[i] = _item[i];
 		}
 
@@ -172,7 +172,7 @@ Leet.prototype = {
 
 		var key = this[name];
 
-		for (i in values) {
+		for (var i in values) {
 			if (name == 'cipher')
 				key[i].unshift(values[i]);
 
@@ -189,7 +189,7 @@ Leet.prototype = {
 		var self = this;
 
 		//First, the roots should be replaced with Leet digits
-		for (i in this.root)
+		for (var i in this.root)
 			string = string.replace(RegExp(i, 'g'), this.root[i]);
 
 		//Replace the remaining characters
