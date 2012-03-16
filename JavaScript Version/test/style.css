@@ -1,0 +1,56 @@
+body {
+	font: 14px/18px arial,tahoma, verdana, serif;
+}
+
+h3 {
+	font: 600 16px/18px arial,tahoma, verdana, serif;
+}
+
+div, pre {
+	overflow: hidden;
+}
+
+td, td b {
+	width: 25px;
+	height: 25px;
+}
+
+td {
+	border: 1px solid #C9C9C9;
+	cursor: pointer;
+	text-align: center;
+}
+
+td:hover {
+	background: #E6E6E6;
+}
+
+td b {
+	background: #DAF25A;
+	display: block;
+	line-height: 23px;
+}
+
+td.selected {background: #A8E6E7;}
+
+textarea {
+	display: block;
+	margin-bottom: 25px;
+	width: 523px;
+	height: 100px;
+}
+
+pre {
+	background: #FCFCF8;
+	border: 1px dashed #7D7676;
+	clear: both;
+	color: #480E0C;
+	margin-bottom: 20px;
+	width: 636px;
+}
+
+label, table {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+}
