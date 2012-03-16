@@ -105,8 +105,8 @@ class Leet {
 			'six':  '6',   'seven': '7',  'eight': '8',
 			'ait':  '8',   'ate':   '8',  'eit':   '8',
 			'nine': '9',   'ks':    'x',  'cs':    'x',
-			'and':  7,     'anned':  7,   'ant':   7,
-			'yeah': 'ya!', 'you':    'u', 'cool':  'k1'
+			'and':  '7',   'anned': '7',  'ant':   '7',
+			'yeah': 'ya!', 'you':   'u',  'cool':  'k1'
 		};
 	}
 
