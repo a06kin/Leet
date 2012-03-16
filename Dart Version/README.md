@@ -14,43 +14,48 @@ Object Leet ([Boolean digit = false])
 *For example you could use the following code:*
 
 ```dart
-
 #source('leet.dart');
 
-Leet leet = new Leet();
+void main() {
+	Leet leet = new Leet();
 
-//set the character of a set of default values
-leet.item({
-    'a': '1', //@
-    'b': '2'  //ß
-});
+	//set the character of a set of default values
+	leet.item({
+	    'a': '1', //@
+	    'b': '2'  //ß
+	});
 
-//extend the existing set of roots:
-leet.extend('root', {
-    'foo': '1',
-    'bar': '2'
- });
+	//extend the existing set of roots:
+	leet.extend('root', {
+	    'foo': '1',
+	    'bar': '2'
+	 });
 
-//extends the existing set of ciphers.
-//Note you'd to escape sequences like ',",\
-leet.extend('cipher', {
-    'a': '/-\\',
-    'b': '\\>>'
- });
+	//extends the existing set of ciphers.
+	//Note you'd to escape sequences like ',",\
+	leet.extend('cipher', {
+	    'a': '/-\\',
+	    'b': '\\>>'
+	 });
 
-//encode
-var encode = leet.encode('foo is a big bar');
+	//encode
+	var encode = leet.encode('foo is a big bar');
 
-//result
-print(encode); //1 !$ @ ß![, 2
+	//result
+	print(encode); //1 !$ @ ß![, 2
+}
 ```
 
 *An alternative digital view*:
 Set positive boolean value in constructor to have an alternative digital view:
 
 ```dart
-Leet leet = new Leet(true);
-print(leet.encode('leet')) //073377
+#source('leet.dart');
+
+void main() {
+	Leet leet = new Leet(true);
+	print(leet.encode('leet')) //073377
+}
 ```
 
 * License
