@@ -1,7 +1,6 @@
 var Translator = {
 	init: function() {
 		var div = $('#leet');
-
 		this.table(div);
 		this.form(div);
 	},
@@ -12,6 +11,7 @@ var Translator = {
 			item = {},
 			digit = 0;
 
+		//toggle encryption
 		var encrypt = function() {
 			var output = textarea.eq(1),
 				leet = new Leet(digit);
@@ -23,6 +23,7 @@ var Translator = {
 				output.val(output[0].defaultValue);
 		};
 
+		//input
 		input.bind('keyup input change', encrypt).toggleValue();
 
 		//set index
@@ -64,8 +65,6 @@ var Translator = {
 		$.map(cipher, function(value, key) {
 			alphabet.push(key);
 		});
-
-		fragment = document.createDocumentFragment();
 
 		//create ceils
 		$('table tr').each(function(i) {
