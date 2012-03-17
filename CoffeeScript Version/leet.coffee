@@ -122,7 +122,7 @@ class Leet
 
 		key = @[name];
 
-		for i of values
+		for own i of values
 			if name is 'cipher'
 				key[i].unshift(values[i])
 
@@ -137,12 +137,12 @@ class Leet
 		items = {}
 
 		#fill items with default values
-		for i of @cipher
+		for own i of @cipher
 			items[i] = 0
 
 		#set the item
 		if @_item
-			for i of @_item or {}
+			for own i of @_item or {}
 				items[i] = @_item[i]
 
 		items[item]
