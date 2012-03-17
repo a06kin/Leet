@@ -125,7 +125,7 @@ Leet.prototype = {
 		var _item = this._item;
 
 		if (_item) {
-			Object.keys(_item || {}).forEach(function(i) {
+			Object.keys(_item).forEach(function(i) {
 				items[i] = _item[i];
 			});
 		}
