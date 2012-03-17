@@ -141,9 +141,8 @@ class Leet
 			items[i] = 0
 
 		#set the item
-		if @_item
-			for own i of @_item or {}
-				items[i] = @_item[i]
+		if @_item then for own i of @_item
+			items[i] = @_item[i]
 
 		items[item]
 
@@ -180,7 +179,7 @@ class Leet
 			cipher = @cipher[item]
 
 			return if item of @cipher
-				cipher[if @digit then cipher[-1..] else @items(item)]
+				if @digit then cipher[-1..] else cipher[@items(item)]
 			else item
 
 	###
