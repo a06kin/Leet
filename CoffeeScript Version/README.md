@@ -15,26 +15,26 @@ class Leet ([Boolean digit = false])
 
 ```coffeescript
 
-leet = new Leet()
+leet = new Leet
 
 #extends the existing set of ciphers
 #Note you'd to escape sequences like ',",\
-leet.extend('cipher', {
+leet.extend 'cipher', {
    a: '/-\\',
    b: '\\>>'
-})
+}
 
 #set the character of a set of default values
-leet.item({
+leet.item {
    a: 1, #@
    b: 2  #ß
-})
+}
 
 #extend the existing set of roots:
-leet.extend('root', {
+leet.extend 'root', {
    foo: 1,
    bar: 2
-})
+}
 
 #encode
 encode = leet.encode 'foo is a big bar'
@@ -48,7 +48,7 @@ Set positive boolean value in constructor to have an alternative digital view:
 
 ```coffeescript
 leet = new Leet true
-console.log leet.encode('leet') #073377
+console.log leet.encode 'leet' #073377
 ```
 
 * License
