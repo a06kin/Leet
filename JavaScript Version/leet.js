@@ -38,6 +38,7 @@
  *
  * @author: Alexander Guinness
  * @version: 1.2
+ * @include: Array.prototype.forEach(), Object.keys()
  * @params: {Boolean} digit - optional boolean parameter
  * to set an alternative digital view
  * @license: MIT
@@ -116,15 +117,17 @@ Leet.prototype = {
 		var items = {};
 
 		//fill items with default values
-		for (var i in this.cipher)
+		Object.keys(this.cipher).forEach(function(i) {
 			items[i] = 0;
+		});
 
 		//set the item
 		var _item = this._item;
 
 		if (_item) {
-			for (var i in _item || {})
+			Object.keys(_item || {}).forEach(function(i) {
 				items[i] = _item[i];
+			});
 		}
 
 		return items[item]|0;
@@ -170,15 +173,13 @@ Leet.prototype = {
 		if (!this.object(values) && !this.object(name))
 			return -1;
 
-		var key = this[name];
-
-		for (var i in values) {
+		Object.keys(values).forEach(function(i) {
 			if (name == 'cipher')
-				key[i].unshift(values[i]);
+				this.cipher[i].unshift(values[i]);
 
 			else if (name == 'root')
-				key[i] = values[i];
-		}
+				this.root[i] = values[i];
+		}, this);
 	},
 
 	/*
@@ -189,8 +190,9 @@ Leet.prototype = {
 		var self = this;
 
 		//First, the roots should be replaced with Leet digits
-		for (var i in this.root)
+		Object.keys(this.root).forEach(function(i) {
 			string = string.replace(RegExp(i, 'g'), this.root[i]);
+		}, this);
 
 		//Replace the remaining characters
 		return string.replace(/./g, function(item) {
